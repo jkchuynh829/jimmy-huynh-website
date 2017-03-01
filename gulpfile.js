@@ -4,10 +4,14 @@ const nodemon = require('gulp-nodemon');
 const browserify = require('gulp-browserify');
 
 gulp.task('scripts', () => {
-  gulp.src('./src/main.js')
+  gulp.src('./views/main.js')
       .pipe(browserify({
         insertGlobals: true,
         debut: !gulp.env.production
       }))
-      .pipe(gulp.dest('./public/build/'));
+      .pipe(gulp.dest('./public/'));
 });
+
+gulp.task('build', ['scripts']);
+
+gulp.task('default', ['build']);
